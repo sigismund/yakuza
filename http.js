@@ -105,7 +105,11 @@ Http.prototype.__interceptResponse = function (err, res, body, url, data, makeRe
 * @private
 */
 Http.prototype.__pushToLog = function (logEntry) {
-  this._log.push(logEntry);
+    if (this._log.length === 10) {
+        this._log.shift();
+    }
+
+    this._log.push(logEntry);
 };
 
 /**
